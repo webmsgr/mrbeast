@@ -836,7 +836,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "mrbreast"
+name = "mrbeast"
 version = "0.1.0"
 dependencies = [
  "beast_assets",
