@@ -1,10 +1,9 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use std::{num::NonZeroU32, time::{Instant, Duration}};
+use std::{num::NonZeroU32};
 
 use rodio::{OutputStream, Source};
 use winit::{
-    event::{Event, WindowEvent, self},
-    event_loop::{ControlFlow, EventLoop},
+    event_loop::{EventLoop},
     window::WindowBuilder, dpi::LogicalSize,
 };
 use game_loop::game_loop;

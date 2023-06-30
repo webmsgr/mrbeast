@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 
-image = { version = "0.24.6", default-features = false, features = ["png"] }
+image = { version = "0.24.6", default-features = false, features = ["jpeg", "jpeg_rayon"] }
 lazy_static = "1.4.0"
 rayon = "1.7.0"
 rodio = { version = "0.17.1", default-features = false, features = ["vorbis"] }

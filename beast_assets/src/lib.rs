@@ -1,7 +1,7 @@
 use std::{io::Cursor, sync::Mutex};
 
 use lazy_static::lazy_static;
-use image::{codecs::png::PngDecoder, ImageDecoder, ColorType};
+use image::{codecs::jpeg::JpegDecoder, ImageDecoder, ColorType};
 use rayon::prelude::*;
 use rodio::Decoder;
 include!(concat!(env!("OUT_DIR"), "/beast_data/frames.rs"));
@@ -18,9 +18,9 @@ pub fn load() {
 }
 
 fn process_video() -> ((u32,u32), Vec<Vec<u32>>) {
-    let dim = PngDecoder::new(FRAMES[0]).unwrap().dimensions();
+    let dim = JpegDecoder::new(FRAMES[0]).unwrap().dimensions();
     let frames = FRAMES.par_iter().map(|f| {
-        let decoder = PngDecoder::new(*f).unwrap();
+        let decoder = JpegDecoder::new(*f).unwrap();
         let mut buf = vec![0u8; decoder.total_bytes() as usize];
         assert_eq!(decoder.color_type(), ColorType::Rgb8);
         decoder.read_image(&mut buf).unwrap();
