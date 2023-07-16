@@ -1,10 +1,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use std::{num::NonZeroU32};
+use std::num::NonZeroU32;
 
 use rodio::{OutputStream, Source};
 use winit::{
-    event_loop::{EventLoop},
-    window::WindowBuilder, dpi::LogicalSize,
+    event_loop::EventLoop,
+    window::{WindowBuilder, WindowButtons}, dpi::LogicalSize,
 };
 use game_loop::game_loop;
 use beast_assets::*;
@@ -15,7 +15,7 @@ fn main() {
     println!("Loaded!");
     let event_loop = EventLoop::new();
     let size = LogicalSize::new(VIDEO.0.0, VIDEO.0.1);
-    let window = WindowBuilder::new().with_inner_size(size).with_resizable(false).with_title("mrbeast.exe").build(&event_loop).unwrap();
+    let window = WindowBuilder::new().with_inner_size(size).with_resizable(false).with_enabled_buttons(WindowButtons::empty()).with_title("mrbeast.exe").build(&event_loop).unwrap();
     let context = unsafe { softbuffer::Context::new(&window) }.unwrap();
     let mut surface = unsafe { softbuffer::Surface::new(&context, &window) }.unwrap();
     let frame: usize = 0;
